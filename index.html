@@ -291,6 +291,18 @@
       color: var(--clay-soft);
     }
 
+    /* Collapsed menu: just the label, no underline. */
+    .side-nav:not(.open) .nav-drop {
+      border-bottom-color: transparent;
+      margin-bottom: 0;
+    }
+
+    /* The label lights up while it reflects the section currently in view. */
+    .nav-drop.locating {
+      color: var(--clay-soft);
+      font-weight: 700;
+    }
+
     .nav-drop .chev {
       transition: transform .3s ease;
     }
@@ -343,9 +355,9 @@
 
     /* Scroll-spy: the link for the section currently in view stays lit. */
     .side-links a.active {
-      background: rgba(111, 174, 74, 0.22);
+      background: rgba(111, 174, 74, 0.38);
       border-radius: 8px;
-      color: var(--clay-soft);
+      color: #ffffff;
     }
 
     .side-links a.active::before {
@@ -364,7 +376,7 @@
       border-bottom-color: var(--clay);
     }
 
-    /* Book Now: green pill with a light dot running around its border. */
+    /* Book Now CTA: lighthouse sweep that lives ONLY in the border ring, never on the face. */
     @property --bn-angle {
       syntax: '<angle>';
       initial-value: 0deg;
@@ -375,40 +387,47 @@
       to { --bn-angle: 360deg; }
     }
 
-    .book-now {
+    .button.book-now {
       position: relative;
       z-index: 0;
-      background: var(--green);
-      color: #fff;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: 700;
     }
 
-    .side-links a.book-now {
-      margin-top: 12px;
-    }
-
-    .side-links a.book-now::before,
-    .nav-links a.book-now::before {
+    .button.book-now::before {
       content: "";
       position: absolute;
-      inset: -3px;
-      width: auto;
-      z-index: -1;
-      border-radius: 13px;
+      inset: -5px;
+      z-index: 1;
+      border-radius: 17px;
+      padding: 3px;
       background: conic-gradient(from var(--bn-angle),
-        rgba(255, 255, 255, .18) 0deg 300deg,
-        #ffffff 322deg,
-        var(--lime) 338deg,
-        rgba(255, 255, 255, .18) 360deg);
+        rgba(255, 255, 255, .16) 0deg 300deg,
+        #ffffff 325deg,
+        var(--lime) 340deg,
+        rgba(255, 255, 255, .16) 360deg);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
       animation: bn-spin 2.8s linear infinite;
+      pointer-events: none;
+    }
+
+    /* Menu Book Now: clean light pill (design swapped with the page CTA). */
+    .side-links a.book-now,
+    .nav-links a.book-now {
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--green-dark);
+      text-align: center;
+      border-radius: 10px;
+      font-weight: 700;
+      text-shadow: none;
     }
 
     .side-links a.book-now:hover,
     .nav-links a.book-now:hover {
-      background: var(--green-dark);
-      color: #fff;
+      background: var(--green-soft);
+      color: var(--green-dark);
       border-radius: 10px;
     }
 
@@ -417,8 +436,12 @@
     }
 
     .side-links a.book-now.active {
-      background: var(--green);
-      color: #fff;
+      background: var(--green-soft);
+      color: var(--green-dark);
+    }
+
+    .side-links a.book-now.active::before {
+      display: none;
     }
 
     .nav-links a.book-now {
@@ -1186,8 +1209,9 @@
       cursor: pointer;
     }
 
-    /* 14-inch laptops (~1280-1440px): slim the left rail and give content room beside it. */
-    @media (min-width: 921px) and (max-width: 1440px) {
+    /* Laptops (~1280-1680px, incl. 14-inch and scaled displays): slim the left rail
+       and anchor content beside it so the rail never overlaps the text column. */
+    @media (min-width: 921px) and (max-width: 1680px) {
       .brand-logo {
         width: 140px;
         height: 140px;
@@ -1954,7 +1978,7 @@
             Start with the standard maintenance plan, then add hedging, seeding, or lawn-building support as needed.
           </p>
         </div>
-        <a class="button secondary" href="mailto:info@mrclayslandscaping.com?subject=Lawn%20Care%20Service%20Request">Book Now</a>
+        <a class="button book-now" href="mailto:info@mrclayslandscaping.com?subject=Lawn%20Care%20Service%20Request">Book Now</a>
       </div>
     </div>
   </main>
@@ -2124,6 +2148,7 @@
       });
 
       menuLabel.textContent = current ? sectionLabels[current] : 'Menu';
+      navDrop.classList.toggle('locating', Boolean(current));
     }
 
     window.addEventListener('scroll', () => {
