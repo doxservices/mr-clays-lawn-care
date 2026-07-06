@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mr. Clay's Lawn Care offers reliable monthly lawn maintenance, hedging, and lawn-building services with clear, stable pricing. Standard plan: two visits per month." />
+  <title>Mr. Clay's Lawn Care | Maintenance & Landscaping Plans</title>
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <style>
+    :root {
+      --green: #3f7a3a;
+      --green-dark: #1e3a24;
+      --green-soft: #e9f1e6;
+      --lime: #6fae4a;
+      --clay: #c1793f;
+      --clay-dark: #8a4426;
+      --clay-soft: #f5e6d8;
+      --cream: #f8f5ed;
+      --ink: #17231c;
+      --muted: #5c685f;
+      --line: rgba(255, 255, 255, 0.28);
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      --radius: 14px;
+      --text-heading: #f6faf3;
+      --text-body: rgba(240, 247, 238, 0.82);
+      --glass: rgba(10, 24, 15, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    #services,
+    #builder,
+    #lawn-building,
+    #currency,
+    #contact {
+      scroll-margin-top: 48px;
+    }
+
+    /* Ambient page backdrop: placeholder photography until dedicated background art exists. */
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      color: var(--text-body);
+      background-image: url('assets/images/lawn-maintenance-bg.png');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+
+    /* Photo panels: real photography shown clearly, alternating left/right down the page. */
+    .media-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 36px;
+    }
+
+    .media-row .section-header {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 0;
+      align-self: stretch;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 32px;
+      backdrop-filter: blur(6px) saturate(1.15);
+      -webkit-backdrop-filter: blur(6px) saturate(1.15);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+      transition: background .35s ease;
+    }
+
+    .media-row .section-header:hover {
+      background: rgba(8, 20, 13, 0.8);
+    }
+
+    .photo-panel {
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      min-height: 320px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .photo-panel.hedge { background-image: url('assets/images/hedge-care-bg.png'); }
+    .photo-panel.watering { background-image: url('assets/images/watering-bg.png'); }
+
+    .card,
+    .builder,
+    .quote-card,
+    .clean-list,
+    .currency-page,
+    .hero-card,
+    .mini-stat,
+    .policy-box,
+    .visit-option span,
+    .trust-pill {
+      backdrop-filter: blur(6px) saturate(1.15);
+      -webkit-backdrop-filter: blur(6px) saturate(1.15);
+    }
+
+    /* Frosted surfaces solidify on hover for readability. */
+    .card,
+    .builder,
+    .quote-card,
+    .clean-list,
+    .currency-page,
+    .hero-card,
+    .mini-stat,
+    .policy-box,
+    .visit-option span,
+    .trust-pill {
+      transition: background .35s ease, border-color .35s ease;
+    }
+
+    .card:hover,
+    .builder:hover,
+    .clean-list:hover,
+    .currency-page:hover,
+    .hero-card:hover,
+    .mini-stat:hover,
+    .policy-box:hover,
+    .trust-pill:hover {
+      background: rgba(8, 20, 13, 0.8);
+    }
+
+    .quote-card:hover {
+      background: rgba(14, 30, 19, 0.85);
+    }
+
+    .visit-option input:not(:checked) + span:hover {
+      background: rgba(8, 20, 13, 0.78);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 24, 15, 0.18);
+      backdrop-filter: blur(8px) saturate(1.15);
+      -webkit-backdrop-filter: blur(8px) saturate(1.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      transition: background .35s ease;
+    }
+
+    .topbar:hover {
+      background: rgba(8, 20, 13, 0.82);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    /* Logo rests at page center (120%) flanked by horizon lines; on scroll it grows to 150%
+       and moves to the left margin, landing on top of the side navigation. */
+    .brand-logo {
+      position: fixed;
+      top: 10px;
+      left: calc(50vw - 90px);
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 20px 44px rgba(30, 58, 36, 0.32);
+      border: 4px solid var(--cream);
+      z-index: 55;
+      transition: left .45s ease, top .45s ease, width .45s ease, height .45s ease;
+    }
+
+    body.scrolled .brand-logo {
+      width: 225px;
+      height: 225px;
+      left: max(10px, calc((100vw - 1180px) / 4 - 112px));
+    }
+
+    /* Horizon lines flanking the centered logo, with a clear margin on each side of it. */
+    .logo-horizon {
+      position: fixed;
+      top: 99px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      z-index: 30;
+      pointer-events: none;
+      transition: opacity .4s ease;
+    }
+
+    .logo-horizon::before,
+    .logo-horizon::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 2px;
+    }
+
+    .logo-horizon::before {
+      left: 0;
+      right: calc(50% + 118px);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .55) 18%, rgba(255, 255, 255, .55));
+    }
+
+    .logo-horizon::after {
+      left: calc(50% + 118px);
+      right: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .55) 82%, transparent);
+    }
+
+    body.scrolled .logo-horizon {
+      opacity: 0;
+    }
+
+    /* Get Started holds its place in the left rail, above the menu; the logo lands above it on scroll. */
+    .cta-follow {
+      position: fixed;
+      top: 249px;
+      left: max(10px, calc((100vw - 1180px) / 4 - 112px));
+      width: 225px;
+      z-index: 54;
+    }
+
+    /* Left navigation dropdown — expanded at the top of the page, collapses to a chevron on scroll. */
+    .side-nav {
+      position: fixed;
+      top: 309px;
+      left: max(10px, calc((100vw - 1180px) / 4 - 112px));
+      width: 225px;
+      padding: 8px 10px;
+      border-radius: 16px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(6px) saturate(1.15);
+      -webkit-backdrop-filter: blur(6px) saturate(1.15);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+      z-index: 45;
+      transition: background .35s ease;
+    }
+
+    .side-nav:hover {
+      background: rgba(8, 20, 13, 0.8);
+    }
+
+    .nav-drop {
+      font: inherit;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-heading);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 8px 10px;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .nav-drop .chev {
+      transition: transform .3s ease;
+    }
+
+    .side-nav.open .nav-drop .chev {
+      transform: rotate(180deg);
+    }
+
+    .side-links {
+      display: flex;
+      flex-direction: column;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height .4s ease, opacity .3s ease;
+    }
+
+    .side-nav.open .side-links {
+      max-height: 320px;
+      opacity: 1;
+    }
+
+    /* Each nav item sits on its own inset horizon line. */
+    .side-links a {
+      position: relative;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: -0.01em;
+      color: var(--text-heading);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      padding: 11px 10px;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .side-links a::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .45) 18%, rgba(255, 255, 255, .45) 82%, transparent);
+    }
+
+    .side-links a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: var(--clay-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-heading);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    .nav-links a {
+      padding: 6px 2px;
+      border-bottom: 2px solid transparent;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--clay-soft);
+      border-bottom-color: var(--clay);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: var(--green);
+      color: white;
+      font-weight: 700;
+      letter-spacing: .01em;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      background: var(--green-dark);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
+    }
+
+    .button.secondary {
+      color: var(--green-dark);
+      background: rgba(255, 255, 255, 0.82);
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .button.secondary:hover {
+      background: var(--green-soft);
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 224px 22px 42px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5.6rem);
+      line-height: .92;
+      letter-spacing: -0.075em;
+      margin: 0 0 24px;
+      color: var(--text-heading);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      color: var(--text-body);
+      font-size: 1.15rem;
+      margin: 0 0 30px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--text-heading);
+      font-weight: 700;
+      font-size: .95rem;
+    }
+
+    .trust-pill {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 12px;
+    }
+
+    .hero-card {
+      border-radius: 12px;
+      background: rgba(10, 24, 15, 0.45);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.3);
+      overflow: hidden;
+      position: relative;
+      min-height: 540px;
+    }
+
+    .yard-visual {
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-panel {
+      padding: 28px;
+    }
+
+    .price-label {
+      color: var(--text-body);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .price {
+      font-size: 3.5rem;
+      line-height: 1;
+      letter-spacing: -0.07em;
+      font-weight: 900;
+      color: var(--text-heading);
+      margin: 10px 0 6px;
+    }
+
+    .price small {
+      font-size: 1.05rem;
+      letter-spacing: 0;
+      color: var(--text-body);
+      font-weight: 700;
+    }
+
+    .price-detail {
+      color: var(--text-body);
+      margin: 0 0 20px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .mini-stat {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      color: var(--text-heading);
+      font-size: 1.2rem;
+    }
+
+    .mini-stat span {
+      color: var(--text-body);
+      font-size: .9rem;
+    }
+
+    section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 48px 22px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: .98;
+      letter-spacing: -0.06em;
+      color: var(--text-heading);
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.32);
+      margin: 0;
+      max-width: 720px;
+    }
+
+    .section-header p {
+      color: var(--text-body);
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+      max-width: 420px;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(15, 63, 40, .07);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.035em;
+      color: var(--text-heading);
+    }
+
+    .card p {
+      color: var(--text-body);
+      margin: 0 0 18px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      color: var(--text-body);
+      margin: 0;
+    }
+
+    .card li {
+      margin: 7px 0;
+    }
+
+    .builder-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 390px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .builder {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .builder h3 {
+      margin: 0 0 8px;
+      color: var(--text-heading);
+      font-size: 1.7rem;
+      letter-spacing: -0.045em;
+    }
+
+    .builder p {
+      color: var(--text-body);
+      margin-top: 0;
+    }
+
+    .visit-picker {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 18px 0 24px;
+    }
+
+    .visit-option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .visit-option span {
+      display: block;
+      border: 1px solid var(--line);
+      background: rgba(248, 245, 237, 0.72);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--text-heading);
+      transition: border .18s ease, background .18s ease, transform .18s ease;
+    }
+
+    .visit-option small {
+      display: block;
+      color: var(--text-body);
+      font-weight: 700;
+      margin-top: 3px;
+    }
+
+    .visit-option input:checked + span {
+      border-color: var(--green);
+      background: var(--green);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .visit-option input:checked + span small {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .plan-presets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .preset {
+      font: inherit;
+      text-align: left;
+      display: grid;
+      gap: 6px;
+      align-content: start;
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      backdrop-filter: blur(6px) saturate(1.15);
+      -webkit-backdrop-filter: blur(6px) saturate(1.15);
+      color: var(--text-heading);
+      cursor: pointer;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+      transition: background .3s ease, border-color .3s ease, transform .18s ease;
+    }
+
+    .preset:hover {
+      background: rgba(8, 20, 13, 0.8);
+      transform: translateY(-2px);
+    }
+
+    .preset b {
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+    }
+
+    .preset strong {
+      font-size: 1.7rem;
+      letter-spacing: -0.045em;
+      line-height: 1;
+    }
+
+    .preset strong small {
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--text-body);
+    }
+
+    .preset span {
+      color: var(--text-body);
+      font-size: .88rem;
+    }
+
+    .preset.active {
+      background: var(--green);
+      border-color: var(--lime);
+      box-shadow: 0 10px 26px rgba(20, 42, 26, .4);
+    }
+
+    .preset.active span,
+    .preset.active strong small {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    @media (max-width: 920px) {
+      .plan-presets {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin: 18px 0 26px;
+    }
+
+    .service-tile {
+      position: relative;
+    }
+
+    .service-tile input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .service-tile span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      aspect-ratio: 1 / 1;
+      padding: 14px 10px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      backdrop-filter: blur(6px) saturate(1.15);
+      -webkit-backdrop-filter: blur(6px) saturate(1.15);
+      border-radius: 14px;
+      cursor: pointer;
+      color: var(--text-heading);
+      transition: background .3s ease, border-color .3s ease, transform .18s ease;
+    }
+
+    .service-tile span:hover {
+      background: rgba(8, 20, 13, 0.78);
+      transform: translateY(-2px);
+    }
+
+    .service-tile b {
+      font-size: .98rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .service-tile small {
+      color: var(--text-body);
+      font-weight: 700;
+      font-size: .8rem;
+    }
+
+    .service-tile svg {
+      color: var(--clay-soft);
+    }
+
+    .service-tile input:checked + span {
+      border-color: var(--lime);
+      background: var(--green);
+      box-shadow: 0 10px 26px rgba(20, 42, 26, .4);
+    }
+
+    .service-tile input:checked + span small {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .service-tile input:checked + span svg {
+      color: white;
+    }
+
+    .service-tile input:focus-visible + span {
+      outline: 2px solid var(--lime);
+      outline-offset: 2px;
+    }
+
+    .quote-card {
+      position: sticky;
+      top: 96px;
+      background: var(--green-dark);
+      color: white;
+      border-radius: 12px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .quote-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+      letter-spacing: -0.04em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-card p {
+      color: rgba(255,255,255,.75);
+      position: relative;
+      z-index: 1;
+    }
+
+    .total {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0;
+    }
+
+    .total span {
+      display: block;
+      color: rgba(255,255,255,.72);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: .78rem;
+      letter-spacing: .08em;
+    }
+
+    .total strong {
+      display: block;
+      font-size: 2.4rem;
+      letter-spacing: -0.06em;
+      line-height: 1.05;
+      margin-top: 6px;
+    }
+
+    .total small {
+      color: rgba(255,255,255,.72);
+      font-weight: 700;
+    }
+
+    .quote-note {
+      font-size: .9rem;
+      color: rgba(255,255,255,.7);
+      margin: 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .feature-panel {
+      background: var(--green-dark);
+      color: white;
+      border-radius: 12px;
+      padding: 30px;
+      min-height: 330px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-panel h2,
+    .feature-panel p {
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-panel h2 {
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: .96;
+      letter-spacing: -0.065em;
+      margin: 0 0 14px;
+    }
+
+    .feature-panel p {
+      color: rgba(255,255,255,.78);
+      margin: 0;
+      max-width: 520px;
+    }
+
+    .clean-list {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .clean-item {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .clean-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .check {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .clean-item strong {
+      display: block;
+      color: var(--text-heading);
+      margin-bottom: 3px;
+    }
+
+    .clean-item span {
+      color: var(--text-body);
+    }
+
+    .currency-page {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .currency-hero {
+      padding: 34px;
+      background-image:
+        linear-gradient(rgba(20,42,26,.5), rgba(20,42,26,.5)),
+        url('assets/images/lawn-maintenance-bg.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .currency-hero h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .currency-hero p {
+      max-width: 760px;
+      color: rgba(255,255,255,.78);
+      margin: 0;
+    }
+
+    .currency-body {
+      padding: 28px 34px 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .policy-box {
+      background: rgba(248, 245, 237, 0.72);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--clay);
+      border-radius: 14px;
+      padding: 22px;
+    }
+
+    .policy-box h3 {
+      color: var(--text-heading);
+      margin: 0 0 10px;
+      letter-spacing: -0.035em;
+    }
+
+    .policy-box p {
+      color: var(--text-body);
+      margin: 0;
+    }
+
+    .cta {
+      max-width: 1180px;
+      margin: 44px auto 0;
+      padding: 0 22px 70px;
+    }
+
+    .cta-box {
+      border-radius: 12px;
+      padding: 38px;
+      background-image:
+        linear-gradient(rgba(20,42,26,.5), rgba(20,42,26,.5)),
+        url('assets/images/hedge-care-bg.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,.78);
+      margin: 0;
+      max-width: 640px;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 48;
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      background: #0e1c13;
+      padding: 16px 22px;
+      color: var(--text-body);
+      text-align: center;
+      font-size: 1.02rem;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    footer a {
+      font-weight: 600;
+    }
+
+    main {
+      padding-bottom: 110px;
+    }
+
+    /* ---------- Responsive system ---------- */
+
+    /* Desktop: no top bar — the side nav and logo carry the branding/navigation. */
+    @media (min-width: 921px) {
+      .topbar {
+        display: none;
+      }
+    }
+
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text-heading);
+      cursor: pointer;
+    }
+
+    /* Large tablets / small laptops */
+    @media (max-width: 1080px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .plan-presets {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .builder-wrap {
+        grid-template-columns: minmax(0, 1fr) 340px;
+      }
+    }
+
+    /* Tablets */
+    @media (max-width: 920px) {
+      .hero,
+      .builder-wrap,
+      .split,
+      .media-row,
+      .currency-body {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 56px;
+        gap: 28px;
+      }
+
+      .photo-panel {
+        min-height: 220px;
+      }
+
+      .plan-presets {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header,
+      .cta-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .quote-card {
+        position: relative;
+        top: auto;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      /* Mobile menu */
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav.open .nav-links {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        background: rgba(8, 20, 13, 0.96);
+        border-bottom: 1px solid var(--glass-border);
+        padding: 12px 22px 18px;
+      }
+
+      .nav.open .nav-links a {
+        padding: 12px 4px;
+        font-size: 1.05rem;
+      }
+
+      .nav {
+        justify-content: flex-end;
+      }
+
+      .side-nav,
+      .logo-horizon,
+      .cta-follow {
+        display: none;
+      }
+
+      #services,
+      #builder,
+      #lawn-building,
+      #currency,
+      #contact {
+        scroll-margin-top: 92px;
+      }
+
+      .brand-logo {
+        width: 110px;
+        height: 110px;
+        top: 6px;
+        left: calc(50vw - 55px);
+      }
+
+      body.scrolled .brand-logo {
+        width: 110px;
+        height: 110px;
+        left: 8px;
+      }
+    }
+
+    /* Small tablets / large phones */
+    @media (max-width: 640px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 36px 16px;
+      }
+
+      .media-row .section-header {
+        padding: 22px;
+      }
+
+      .builder,
+      .quote-card {
+        padding: 20px;
+      }
+
+      .cta {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    /* Phones */
+    @media (max-width: 560px) {
+      .visit-picker,
+      .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price {
+        font-size: 3rem;
+      }
+
+      .total strong {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero-actions .button {
+        flex: 1;
+        text-align: center;
+      }
+
+      .brand-logo {
+        width: 88px;
+        height: 88px;
+        top: 6px;
+        left: calc(50vw - 44px);
+      }
+
+      body.scrolled .brand-logo {
+        width: 88px;
+        height: 88px;
+        left: 8px;
+      }
+
+      .currency-hero,
+      .currency-body,
+      .cta-box {
+        padding: 20px;
+      }
+
+      .cta-box .button {
+        width: 100%;
+      }
+    }
+  
+
+    /* Final visual tuning: flatter geometry and glass cards. */
+    .hero-card,
+    .card,
+    .builder,
+    .clean-list,
+    .currency-page,
+    .cta-box {
+      border-radius: 16px;
+    }
+
+    .mini-stat,
+    .policy-box,
+    .total,
+    .visit-option span,
+    .trust-pill,
+    .button,
+    .button.secondary {
+      border-radius: 12px;
+    }
+
+    .card,
+    .builder,
+    .clean-list,
+    .currency-page,
+    .mini-stat,
+    .policy-box,
+    .visit-option span,
+    .trust-pill {
+      background: var(--glass);
+      border-color: var(--glass-border);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+    }
+
+    .hero-card {
+      background: rgba(10, 24, 15, 0.45);
+    }
+
+    .yard-visual {
+      background-image: url('assets/images/lawn-maintenance-bg.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .quote-card {
+      border-radius: 16px;
+      background: linear-gradient(rgba(20,42,26,.55), rgba(20,42,26,.55));
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(8px) saturate(1.15);
+      -webkit-backdrop-filter: blur(8px) saturate(1.15);
+    }
+
+    .currency-hero,
+    .cta-box {
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(8px) saturate(1.15);
+      -webkit-backdrop-filter: blur(8px) saturate(1.15);
+    }
+
+    .feature-panel {
+      border-radius: 16px;
+      background:
+        linear-gradient(rgba(20,42,26,.5), rgba(20,42,26,.5)),
+        url('assets/images/sprinkler-bg.png');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .card-icon,
+    .check {
+      border-radius: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <button type="button" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="17" x2="20" y2="17" />
+        </svg>
+      </button>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#builder">Build Your Plan</a>
+        <a href="#lawn-building">Lawn Building</a>
+        <a href="#currency">Pricing</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="logo-horizon" aria-hidden="true"></div>
+
+  <a href="#top" class="brand-fixed" aria-label="Back to top">
+    <img src="assets/logo.png" alt="Mr. Clay's Landscaping logo" class="brand-logo" />
+  </a>
+
+  <a class="button cta-follow" href="#contact">Get Started</a>
+
+  <aside class="side-nav open" aria-label="Primary navigation">
+    <button type="button" class="nav-drop" aria-expanded="true">
+      <span>Menu</span>
+      <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9l6 6 6-6" />
+      </svg>
+    </button>
+    <div class="side-links">
+      <a href="#services">Services</a>
+      <a href="#builder">Build Your Plan</a>
+      <a href="#lawn-building">Lawn Building</a>
+      <a href="#currency">Pricing</a>
+    </div>
+  </aside>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <h1>Professional lawn care for your community.</h1>
+        <p class="hero-copy">
+          Reliable lawn cutting, hedging options, and lawn-building support for homeowners who want clean yards without unpredictable pricing every month.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="#builder">Build Your Plan</a>
+          <a class="button secondary" href="#services">View Services</a>
+        </div>
+        <div class="trust-row">
+          <span class="trust-pill">US$50 per lawn visit</span>
+          <span class="trust-pill">J$15,000 standard monthly plan</span>
+          <span class="trust-pill">2 visits per month</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="yard-visual"></div>
+        <div class="price-panel">
+          <div class="price-label">Standard community plan</div>
+          <div class="price">J$15,000 <small>/ month</small></div>
+          <p class="price-detail">
+            Includes two lawn maintenance visits. Based on a US$50 reference rate per visit.
+          </p>
+          <div class="mini-grid">
+            <div class="mini-stat">
+              <strong>2</strong>
+              <span>scheduled visits</span>
+            </div>
+            <div class="mini-stat">
+              <strong>US$50</strong>
+              <span>per lawn visit</span>
+            </div>
+            <div class="mini-stat">
+              <strong>J$15,000</strong>
+              <span>current standard</span>
+            </div>
+            <div class="mini-stat">
+              <strong>Quote</strong>
+              <span>hedging & seeding</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services">
+      <div class="media-row">
+        <div class="photo-panel hedge" role="img" aria-label="Hedge trimming and yard detail work"></div>
+        <div class="section-header">
+          <h2>Choose the work you actually need.</h2>
+          <p>
+            Keep the base lawn service simple. Add hedging, cleanup, seeding, or restoration only when the yard needs it.
+          </p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2.5 20.5h19" />
+              <path d="M4.5 20.5C4.5 17.5 3.5 15 2 13.5" />
+              <path d="M7.5 20.5c0-4-1-7.5-2.5-10" />
+              <path d="M10.5 20.5c0-5 .2-8.5 1.5-12" />
+              <path d="M13.5 20.5c0-4.5 1-8 2.5-10.5" />
+              <path d="M16.5 20.5c0-3.5 1.2-6.5 3-8.5" />
+              <path d="M19.5 20.5c0-2.5 1-4.5 2-5.5" />
+            </svg>
+          </div>
+          <h3>Lawn Maintenance</h3>
+          <p>Regular cuts for homeowners who want their yard kept neat and controlled.</p>
+          <ul>
+            <li>Lawn cutting</li>
+            <li>Weeding included — progressive reduction and elimination of weeds</li>
+            <li>Basic edging and trimming</li>
+            <li>Light cleanup after cutting</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3" />
+              <circle cx="6" cy="18" r="3" />
+              <line x1="8.5" y1="8" x2="19" y2="19" />
+              <line x1="8.5" y1="16" x2="19" y2="5" />
+            </svg>
+          </div>
+          <h3>Hedging & Detail Work</h3>
+          <p>For homes that need shaping, fence-line cleanup, or stronger yard detail.</p>
+          <ul>
+            <li>Hedge trimming</li>
+            <li>Bush shaping</li>
+            <li>Fence-line cleanup</li>
+            <li>+J$2,000 per visit on any plan</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21v-8" />
+              <path d="M12 13c0-4-3-6-7-6 0 4 3 6 7 6z" />
+              <path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z" />
+            </svg>
+          </div>
+          <h3>Lawn Building</h3>
+          <p>For new or patchy yards that need more than cutting.</p>
+          <ul>
+            <li>Seeding support</li>
+            <li>Patch repair</li>
+            <li>Soil preparation</li>
+            <li>New lawn development quotes</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="builder">
+      <div class="media-row">
+        <div class="section-header">
+          <h2>Build your own maintenance plan.</h2>
+          <p>
+            Choose the services your yard needs and how often we visit — your estimate updates instantly, then request the plan and we'll confirm the details.
+          </p>
+        </div>
+        <div class="photo-panel watering" role="img" aria-label="Watering and irrigation care"></div>
+      </div>
+
+      <div class="plan-presets" aria-label="Plan presets">
+        <button type="button" class="preset" data-preset="essential">
+          <b>Essential Care</b>
+          <strong>J$15,000 <small>/ month</small></strong>
+          <span>Lawn care with weeding included — 2 visits per month. The community standard.</span>
+        </button>
+        <button type="button" class="preset" data-preset="maintenance">
+          <b>Full Maintenance</b>
+          <strong>J$21,000 <small>/ month</small></strong>
+          <span>Lawn care, hedging &amp; watering in every visit — 2 visits per month.</span>
+        </button>
+        <button type="button" class="preset" data-preset="development">
+          <b>New Lawn Development</b>
+          <strong>J$3,000 <small>to start</small></strong>
+          <span>Begins with a consultation — we assess your yard and quote the full development plan.</span>
+        </button>
+      </div>
+
+      <div class="builder-wrap">
+        <div class="builder">
+          <h3>1. What does your yard need?</h3>
+          <p>
+            Select the services included in every visit. Lawn care is the base at J$7,500 and includes weeding for progressive reduction and elimination of weeds. Hedging adds J$2,000 and watering J$1,000 per visit.
+          </p>
+
+          <div class="service-grid core" aria-label="Per-visit service selector">
+            <label class="service-tile">
+              <input type="checkbox" data-service="Lawn Care" data-jmd="7500" checked />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2.5 20.5h19" />
+                  <path d="M4.5 20.5C4.5 17.5 3.5 15 2 13.5" />
+                  <path d="M7.5 20.5c0-4-1-7.5-2.5-10" />
+                  <path d="M10.5 20.5c0-5 .2-8.5 1.5-12" />
+                  <path d="M13.5 20.5c0-4.5 1-8 2.5-10.5" />
+                  <path d="M16.5 20.5c0-3.5 1.2-6.5 3-8.5" />
+                  <path d="M19.5 20.5c0-2.5 1-4.5 2-5.5" />
+                </svg>
+                <b>Lawn Care</b>
+                <small>J$7,500 / visit — weeding included</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Hedging" data-jmd="2000" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3" />
+                  <circle cx="6" cy="18" r="3" />
+                  <line x1="8.5" y1="8" x2="19" y2="19" />
+                  <line x1="8.5" y1="16" x2="19" y2="5" />
+                </svg>
+                <b>Hedging</b>
+                <small>+J$2,000 / visit</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Watering" data-jmd="1000" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
+                  <path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5" />
+                </svg>
+                <b>Watering</b>
+                <small>+J$1,000 / visit</small>
+              </span>
+            </label>
+          </div>
+
+          <h3>2. How many visits per month?</h3>
+          <p>
+            The standard plan is two visits per month. Your selected services are included in every visit.
+          </p>
+
+          <div class="visit-picker" aria-label="Monthly visit selector">
+            <label class="visit-option">
+              <input type="radio" name="visits" value="1" />
+              <span>1 <small>visit</small></span>
+            </label>
+            <label class="visit-option">
+              <input type="radio" name="visits" value="2" checked />
+              <span>2 <small>visits</small></span>
+            </label>
+            <label class="visit-option">
+              <input type="radio" name="visits" value="3" />
+              <span>3 <small>visits</small></span>
+            </label>
+            <label class="visit-option">
+              <input type="radio" name="visits" value="4" />
+              <span>4 <small>visits</small></span>
+            </label>
+          </div>
+
+          <h3>3. Treatments &amp; extras</h3>
+          <p>
+            Targeted treatments priced per treatment, not per visit. Not sure what your yard needs? Book a consultation and we'll recommend the right combination.
+          </p>
+
+          <div class="service-grid extras" aria-label="Treatment selector">
+            <label class="service-tile">
+              <input type="checkbox" data-service="Fertilizer Treatment" data-jmd="3000" data-freq="monthly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
+                  <path d="M12 11v6" />
+                  <path d="M9 14h6" />
+                </svg>
+                <b>Fertilizer Treatment</b>
+                <small>+J$3,000 / treatment</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Inspection & Pesticide Treatment" data-jmd="3000" data-freq="monthly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" />
+                  <path d="M9 11.5l2 2 4-4" />
+                </svg>
+                <b>Inspection &amp; Pesticide</b>
+                <small>+J$3,000 / treatment</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Topsoil Treatment" data-jmd="10000" data-freq="quarterly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l9 5-9 5-9-5z" />
+                  <path d="M3 13l9 5 9-5" />
+                  <path d="M3 17l9 5 9-5" />
+                </svg>
+                <b>Topsoil Treatment</b>
+                <small>J$10,000 / 3 months</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Consultation" data-jmd="3000" data-freq="once" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H3l2-3.4A8.5 8.5 0 1 1 21 11.5z" />
+                  <path d="M8.5 10.5h7" />
+                  <path d="M8.5 13.5h4.5" />
+                </svg>
+                <b>Consultation</b>
+                <small>J$3,000 / consultation</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <aside class="quote-card">
+          <h3>Your plan preview</h3>
+          <p>Your estimate updates as you build your plan. We confirm the final details after a quick yard review.</p>
+
+          <div class="total">
+            <span>Estimated lawn maintenance</span>
+            <strong id="jmdTotal">J$15,000</strong>
+            <small id="usdTotal">US$100 monthly reference</small>
+          </div>
+
+          <p class="quote-note" id="visitSummary">Includes 2 visits per month at J$7,500 per visit.</p>
+          <p class="quote-note" id="addonSummary">Services in every visit: Lawn Care.</p>
+          <p class="quote-note" id="extraSummary"></p>
+
+          <a class="button" id="requestPlan" href="mailto:info@mrclayslandscaping.com" style="position: relative; z-index: 1; margin-top: 18px; width: 100%; background: var(--clay); color: white;">Request This Plan</a>
+        </aside>
+      </div>
+    </section>
+
+    <section id="lawn-building">
+      <div class="split">
+        <div class="feature-panel">
+          <h2>More than mowing — we build lawns.</h2>
+          <p>
+            Many yards in newer communities are still maturing. From seeding and patch repair to soil prep and full lawn development, we help your yard reach its finished look.
+          </p>
+        </div>
+
+        <div class="clean-list">
+          <div class="clean-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Maintenance keeps the yard controlled.</strong>
+              <span>The monthly plan keeps lawns neat and prevents overgrowth.</span>
+            </div>
+          </div>
+
+          <div class="clean-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Seeding builds the actual lawn.</strong>
+              <span>New homes often need grass support, patch repair, and soil preparation before the yard looks finished.</span>
+            </div>
+          </div>
+
+          <div class="clean-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Fair quotes for bigger jobs.</strong>
+              <span>Hedging, restoration, and lawn-building work is quoted for your specific yard, so you never pay for more than you need.</span>
+            </div>
+          </div>
+
+          <div class="clean-item">
+            <div class="check">✓</div>
+            <div>
+              <strong>Stable pricing you can plan around.</strong>
+              <span>The base plan gives you a clear, consistent monthly price while still allowing customized work.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="currency">
+      <div class="currency-page">
+        <div class="currency-hero">
+          <h2>Simple, transparent pricing.</h2>
+          <p>
+            Our services are priced with a USD reference so your rate stays fair and predictable, and the current JMD rate is always shown clearly for local payment.
+          </p>
+        </div>
+
+        <div class="currency-body">
+          <div class="policy-box">
+            <h3>Current standard rate</h3>
+            <p>
+              The standard monthly lawn maintenance plan is <strong>J$15,000 per month</strong> for two visits, based on a <strong>US$50 per visit</strong> reference rate.
+            </p>
+          </div>
+
+          <div class="policy-box">
+            <h3>Why we use a USD reference</h3>
+            <p>
+              The USD reference keeps pricing consistent when exchange rates move. The JMD amount is shown for your convenience and is only reviewed if the exchange rate changes materially.
+            </p>
+          </div>
+
+          <div class="policy-box">
+            <h3>How you pay</h3>
+            <p>
+              Payment is arranged directly with us in JMD — no automatic billing, no hidden fees, and no long-term lock-in. You always know your rate before any work begins.
+            </p>
+          </div>
+
+          <div class="policy-box">
+            <h3>Rate changes with notice</h3>
+            <p>
+              If a rate adjustment is ever needed, you'll be told in advance with the new amount clearly stated. Your service agreement always spells out the exact terms.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta" id="contact">
+      <div class="cta-box">
+        <div>
+          <h2>Ready to keep your yard handled?</h2>
+          <p>
+            Start with the standard maintenance plan, then add hedging, seeding, or lawn-building support as needed.
+          </p>
+        </div>
+        <a class="button secondary" href="mailto:info@mrclayslandscaping.com?subject=Lawn%20Care%20Service%20Request">Request Service</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Mr. Clay's Lawn Care · Reliable lawn maintenance, hedging &amp; lawn building ·
+    <a href="mailto:info@mrclayslandscaping.com" style="color: #e2b07e;">info@mrclayslandscaping.com</a>
+    <br />
+    <span style="font-size: .92rem;">Website by <a href="https://doxservices.com" target="_blank" rel="noopener" style="color: var(--clay-soft);">DoxServices</a></span>
+  </footer>
+
+  <script>
+    const visitInputs = document.querySelectorAll('input[name="visits"]');
+    const coreInputs = document.querySelectorAll('.service-grid.core input');
+    const extraInputs = document.querySelectorAll('.service-grid.extras input');
+    const presetButtons = document.querySelectorAll('.preset');
+    const jmdTotal = document.getElementById('jmdTotal');
+    const usdTotal = document.getElementById('usdTotal');
+    const visitSummary = document.getElementById('visitSummary');
+    const addonSummary = document.getElementById('addonSummary');
+    const extraSummary = document.getElementById('extraSummary');
+
+    const JMD_PER_USD = 150;
+
+    const presets = {
+      essential: { services: ['Lawn Care'], extras: [] },
+      maintenance: { services: ['Lawn Care', 'Hedging', 'Watering'], extras: [] },
+      development: { services: [], extras: ['Consultation'] }
+    };
+
+    function formatJMD(value) {
+      return 'J$' + value.toLocaleString('en-US');
+    }
+
+    function checkedNames(inputs) {
+      return Array.from(inputs).filter(i => i.checked).map(i => i.dataset.service);
+    }
+
+    function syncPresets() {
+      const services = checkedNames(coreInputs).sort().join('|');
+      const extras = checkedNames(extraInputs).sort().join('|');
+      const visits = Number(document.querySelector('input[name="visits"]:checked').value);
+
+      presetButtons.forEach(button => {
+        const preset = presets[button.dataset.preset];
+        const matches =
+          preset.services.slice().sort().join('|') === services &&
+          preset.extras.slice().sort().join('|') === extras &&
+          (preset.services.length === 0 || visits >= 2);
+        button.classList.toggle('active', matches);
+      });
+    }
+
+    function updatePlan() {
+      const visits = Number(document.querySelector('input[name="visits"]:checked').value);
+
+      const core = Array.from(coreInputs).filter(i => i.checked);
+      const extras = Array.from(extraInputs).filter(i => i.checked);
+
+      const jmdPerVisit = core.reduce((sum, i) => sum + Number(i.dataset.jmd), 0);
+      const monthlyTreatments = extras
+        .filter(i => i.dataset.freq === 'monthly')
+        .reduce((sum, i) => sum + Number(i.dataset.jmd), 0);
+      const quarterly = extras
+        .filter(i => i.dataset.freq === 'quarterly')
+        .reduce((sum, i) => sum + Number(i.dataset.jmd), 0);
+      const oneTime = extras
+        .filter(i => i.dataset.freq === 'once')
+        .reduce((sum, i) => sum + Number(i.dataset.jmd), 0);
+
+      const serviceNames = core.map(i => i.dataset.service);
+      const extraNames = extras.map(i => i.dataset.service);
+      const monthly = visits * jmdPerVisit + monthlyTreatments;
+
+      if (monthly > 0) {
+        jmdTotal.textContent = formatJMD(monthly);
+        usdTotal.textContent = 'US$' + Math.round(monthly / JMD_PER_USD).toLocaleString('en-US') + ' monthly reference';
+        visitSummary.textContent =
+          'Includes ' + visits + (visits === 1 ? ' visit' : ' visits') + ' per month at ' + formatJMD(jmdPerVisit) + ' per visit' +
+          (monthlyTreatments > 0 ? ', plus ' + formatJMD(monthlyTreatments) + ' in monthly treatments.' : '.');
+      } else if (oneTime > 0) {
+        jmdTotal.textContent = formatJMD(oneTime);
+        usdTotal.textContent = 'one-time consultation';
+        visitSummary.textContent = 'We assess your yard and quote the full development plan after your consultation.';
+      } else {
+        jmdTotal.textContent = 'J$0';
+        usdTotal.textContent = 'select services to see your rate';
+        visitSummary.textContent = 'Select at least one service or treatment to build your plan.';
+      }
+
+      addonSummary.textContent = serviceNames.length
+        ? 'Services in every visit: ' + serviceNames.join(', ') + '.'
+        : 'No per-visit services selected.';
+
+      const extraParts = [];
+      if (quarterly > 0) extraParts.push('+ ' + formatJMD(quarterly) + ' topsoil treatment every 3 months');
+      if (oneTime > 0 && monthly > 0) extraParts.push('+ ' + formatJMD(oneTime) + ' one-time consultation');
+      extraSummary.textContent = extraParts.length ? extraParts.join(' · ') + '.' : '';
+      extraSummary.style.display = extraParts.length ? '' : 'none';
+
+      const body =
+        'Hello,\n\nI would like to request the following lawn care plan:\n\n' +
+        '- Services per visit: ' + (serviceNames.length ? serviceNames.join(', ') : 'none') + '\n' +
+        '- Visits per month: ' + visits + '\n' +
+        '- Rate per visit: ' + formatJMD(jmdPerVisit) + '\n' +
+        '- Treatments & extras: ' + (extraNames.length ? extraNames.join(', ') : 'none') + '\n' +
+        '- Estimated monthly total: ' + formatJMD(monthly) +
+        (quarterly > 0 ? '\n- Topsoil treatment: ' + formatJMD(quarterly) + ' every 3 months' : '') +
+        (oneTime > 0 ? '\n- Consultation: ' + formatJMD(oneTime) + ' one-time' : '') +
+        '\n\nMy name and address:\n';
+
+      document.getElementById('requestPlan').href =
+        'mailto:info@mrclayslandscaping.com?subject=' + encodeURIComponent('Lawn Care Plan Request') +
+        '&body=' + encodeURIComponent(body);
+
+      syncPresets();
+    }
+
+    presetButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const preset = presets[button.dataset.preset];
+        coreInputs.forEach(i => { i.checked = preset.services.includes(i.dataset.service); });
+        extraInputs.forEach(i => { i.checked = preset.extras.includes(i.dataset.service); });
+        if (Number(document.querySelector('input[name="visits"]:checked').value) < 2) {
+          document.querySelector('input[name="visits"][value="2"]').checked = true;
+        }
+        updatePlan();
+      });
+    });
+
+    visitInputs.forEach(input => input.addEventListener('change', updatePlan));
+    coreInputs.forEach(input => input.addEventListener('change', updatePlan));
+    extraInputs.forEach(input => input.addEventListener('change', updatePlan));
+
+    const sideNav = document.querySelector('.side-nav');
+    const navDrop = document.querySelector('.nav-drop');
+    let menuTouched = false;
+    let autoCollapsed = false;
+
+    navDrop.addEventListener('click', () => {
+      menuTouched = true;
+      const open = sideNav.classList.toggle('open');
+      navDrop.setAttribute('aria-expanded', open);
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 20;
+      document.body.classList.toggle('scrolled', scrolled);
+
+      if (scrolled && !autoCollapsed && !menuTouched) {
+        autoCollapsed = true;
+        sideNav.classList.remove('open');
+        navDrop.setAttribute('aria-expanded', 'false');
+      }
+    }, { passive: true });
+
+    const nav = document.querySelector('.nav');
+    const navToggle = document.querySelector('.nav-toggle');
+    navToggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    updatePlan();
+  </script>
+</body>
+</html>
