@@ -268,18 +268,27 @@
 
     .nav-drop {
       font: inherit;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--text-heading);
+      font-weight: 600;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: rgba(240, 247, 238, 0.72);
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: 8px 10px;
+      padding: 10px 10px 12px;
       background: none;
       border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+      margin-bottom: 6px;
       cursor: pointer;
+      transition: color .2s ease;
+    }
+
+    .nav-drop:hover {
+      color: var(--clay-soft);
     }
 
     .nav-drop .chev {
@@ -330,6 +339,29 @@
       background: rgba(255, 255, 255, 0.08);
       border-radius: 8px;
       color: var(--clay-soft);
+    }
+
+    /* Scroll-spy: the link for the section currently in view stays lit. */
+    .side-links a.active {
+      background: rgba(111, 174, 74, 0.22);
+      border-radius: 8px;
+      color: var(--clay-soft);
+    }
+
+    .side-links a.active::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      border-radius: 2px;
+      background: var(--clay);
+    }
+
+    .nav-links a.active {
+      color: var(--clay-soft);
+      border-bottom-color: var(--clay);
     }
 
     .nav-links {
@@ -1946,6 +1978,32 @@
       navDrop.setAttribute('aria-expanded', open);
     });
 
+    // Scroll-spy: track which section is in view and reflect it in the menu.
+    const sectionLabels = {
+      services: 'Services',
+      builder: 'Build Your Plan',
+      'lawn-building': 'Lawn Building',
+      currency: 'Pricing',
+      contact: 'Contact'
+    };
+    const menuLabel = navDrop.querySelector('span');
+
+    function updateScrollLocation() {
+      let current = '';
+      for (const id of Object.keys(sectionLabels)) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) {
+          current = id;
+        }
+      }
+
+      document.querySelectorAll('.side-links a, .nav-links a').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+
+      menuLabel.textContent = current ? sectionLabels[current] : 'Menu';
+    }
+
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY > 20;
       document.body.classList.toggle('scrolled', scrolled);
@@ -1955,7 +2013,11 @@
         sideNav.classList.remove('open');
         navDrop.setAttribute('aria-expanded', 'false');
       }
+
+      updateScrollLocation();
     }, { passive: true });
+
+    updateScrollLocation();
 
     const nav = document.querySelector('.nav');
     const navToggle = document.querySelector('.nav-toggle');
