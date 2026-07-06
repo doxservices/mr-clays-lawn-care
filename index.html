@@ -303,7 +303,14 @@
       font-weight: 700;
     }
 
+    .nav-drop span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .nav-drop .chev {
+      flex-shrink: 0;
       transition: transform .3s ease;
     }
 
@@ -334,7 +341,7 @@
       color: var(--text-heading);
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
       padding: 11px 10px;
-      transition: background .2s ease, color .2s ease;
+      transition: background .2s ease, color .2s ease, padding-left .2s ease;
     }
 
     .side-links a::after {
@@ -353,21 +360,21 @@
       color: var(--clay-soft);
     }
 
-    /* Scroll-spy: the link for the section currently in view stays lit. */
+    /* Scroll-spy: the section in view gets a thin clay accent and a soft fade — no heavy chip. */
     .side-links a.active {
-      background: rgba(111, 174, 74, 0.38);
-      border-radius: 8px;
+      background: linear-gradient(90deg, rgba(193, 121, 63, 0.22), transparent 65%);
       color: #ffffff;
+      padding-left: 18px;
     }
 
     .side-links a.active::before {
       content: "";
       position: absolute;
-      left: 0;
-      top: 10px;
-      bottom: 10px;
-      width: 3px;
-      border-radius: 2px;
+      left: 2px;
+      top: 9px;
+      bottom: 9px;
+      width: 2px;
+      border-radius: 1px;
       background: var(--clay);
     }
 
@@ -1267,6 +1274,63 @@
 
       .hero {
         padding-top: 196px;
+        gap: 28px;
+      }
+
+      /* Scale the content down with the viewport, not just the menu. */
+      section {
+        padding: 36px 22px;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 4.6vw, 4.2rem);
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.7rem, 3vw, 2.6rem);
+      }
+
+      .media-row {
+        gap: 22px;
+      }
+
+      .media-row .section-header {
+        padding: 24px;
+      }
+
+      .photo-panel {
+        min-height: 250px;
+      }
+
+      .card,
+      .builder,
+      .quote-card,
+      .clean-list {
+        padding: 20px;
+      }
+
+      .preset {
+        padding: 16px;
+      }
+
+      .preset strong {
+        font-size: 1.45rem;
+      }
+
+      .price {
+        font-size: 2.9rem;
+      }
+
+      .hero-card {
+        min-height: 460px;
+      }
+
+      .yard-visual {
+        height: 240px;
+      }
+
+      .total strong {
+        font-size: 2rem;
       }
     }
 
@@ -1550,8 +1614,8 @@
       </button>
       <div class="nav-links">
         <a href="#services">Services</a>
-        <a href="#builder">Build Your Plan</a>
-        <a href="#lawn-building">Lawn Building</a>
+        <a href="#builder">Custom Plans</a>
+        <a href="#lawn-building">New Lawns</a>
         <a href="#contact" class="book-now">Book Now</a>
       </div>
     </nav>
@@ -1574,8 +1638,8 @@
     </button>
     <div class="side-links">
       <a href="#services">Services</a>
-      <a href="#builder">Build Your Plan</a>
-      <a href="#lawn-building">Lawn Building</a>
+      <a href="#builder">Custom Plans</a>
+      <a href="#lawn-building">New Lawns</a>
       <a href="#contact" class="book-now">Book Now</a>
     </div>
   </aside>
@@ -1689,13 +1753,13 @@
               <path d="M12 13c0-4 3-6 7-6 0 4-3 6-7 6z" />
             </svg>
           </div>
-          <h3>Lawn Building</h3>
-          <p>For new or patchy yards that need more than cutting.</p>
+          <h3>New Lawns</h3>
+          <p>Full lawn installation for newly developed homes and bare yards.</p>
           <ul>
-            <li>Seeding support</li>
-            <li>Patch repair</li>
-            <li>Soil preparation</li>
-            <li>New lawn development quotes</li>
+            <li>Soil composition assessment</li>
+            <li>Seeding and installation</li>
+            <li>Grading and soil preparation</li>
+            <li>Establishment watering and care plan</li>
           </ul>
         </article>
       </div>
@@ -1704,7 +1768,7 @@
     <section id="builder">
       <div class="media-row">
         <div class="section-header">
-          <h2>Build your own maintenance plan.</h2>
+          <h2>Build your custom plan.</h2>
           <p>
             Choose the services your yard needs and how often we visit — your estimate updates instantly, then request the plan and we'll confirm the details.
           </p>
@@ -1887,9 +1951,9 @@
     <section id="lawn-building">
       <div class="split">
         <div class="feature-panel">
-          <h2>More than mowing — we build lawns.</h2>
+          <h2>New lawns, installed right.</h2>
           <p>
-            Many yards in newer communities are still maturing. From seeding and patch repair to soil prep and full lawn development, we help your yard reach its finished look.
+            A new development doesn't come with a finished yard. We install lawns from the ground up — planned around your soil, drainage, and sunlight — and establish the grass in stages until it's fully grown in.
           </p>
         </div>
 
@@ -1897,32 +1961,32 @@
           <div class="clean-item">
             <div class="check">✓</div>
             <div>
-              <strong>Maintenance keeps the yard controlled.</strong>
-              <span>The monthly plan keeps lawns neat and prevents overgrowth.</span>
+              <strong>Site and soil assessment first.</strong>
+              <span>We test soil composition, grading, and drainage before anything is planted, so the plan fits your yard — not a generic template.</span>
             </div>
           </div>
 
           <div class="clean-item">
             <div class="check">✓</div>
             <div>
-              <strong>Seeding builds the actual lawn.</strong>
-              <span>New homes often need grass support, patch repair, and soil preparation before the yard looks finished.</span>
+              <strong>Seeding matched to your conditions.</strong>
+              <span>Grass and seed selection, soil preparation, and planting are chosen for your yard's soil type, sun exposure, and the season.</span>
             </div>
           </div>
 
           <div class="clean-item">
             <div class="check">✓</div>
             <div>
-              <strong>Fair quotes for bigger jobs.</strong>
-              <span>Hedging, restoration, and lawn-building work is quoted for your specific yard, so you never pay for more than you need.</span>
+              <strong>Establishment care until it's grown in.</strong>
+              <span>Scheduled watering, fertilization, and first cuts take the lawn from bare soil to full, even coverage.</span>
             </div>
           </div>
 
           <div class="clean-item">
             <div class="check">✓</div>
             <div>
-              <strong>Stable pricing you can plan around.</strong>
-              <span>The base plan gives you a clear, consistent monthly price while still allowing customized work.</span>
+              <strong>A specific plan for every yard.</strong>
+              <span>Each new-lawn project gets its own written plan and quote based on the site assessment — starting with a simple consultation.</span>
             </div>
           </div>
         </div>
@@ -2127,8 +2191,8 @@
     // Scroll-spy: track which section is in view and reflect it in the menu.
     const sectionLabels = {
       services: 'Services',
-      builder: 'Build Your Plan',
-      'lawn-building': 'Lawn Building',
+      builder: 'Custom Plans',
+      'lawn-building': 'New Lawns',
       currency: 'Pricing',
       contact: 'Book Now'
     };
@@ -2141,6 +2205,11 @@
         if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) {
           current = id;
         }
+      }
+
+      // At the very end of the page the booking section is the destination.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+        current = 'contact';
       }
 
       document.querySelectorAll('.side-links a, .nav-links a').forEach(link => {
