@@ -932,6 +932,26 @@
       outline-offset: 2px;
     }
 
+    /* Included/free state: a service or treatment becomes included via a plan/service rule. */
+    .tile-included {
+      display: none;
+    }
+
+    .service-tile.included .tile-price {
+      display: none;
+    }
+
+    .service-tile.included .tile-included {
+      display: block;
+      color: var(--lime);
+      font-weight: 800;
+    }
+
+    .service-tile.included span {
+      border-color: var(--lime);
+      box-shadow: 0 0 0 2px rgba(111, 174, 74, 0.2) inset;
+    }
+
     .quote-card {
       position: sticky;
       top: 96px;
@@ -1078,14 +1098,6 @@
       color: var(--text-body);
     }
 
-    .currency-page {
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
     .currency-hero {
       padding: 34px;
       background-image:
@@ -1094,6 +1106,8 @@
       background-size: cover;
       background-position: center;
       color: white;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
     }
 
     .currency-hero h2 {
@@ -1531,7 +1545,6 @@
     .card,
     .builder,
     .clean-list,
-    .currency-page,
     .cta-box {
       border-radius: 16px;
     }
@@ -1549,7 +1562,6 @@
     .card,
     .builder,
     .clean-list,
-    .currency-page,
     .mini-stat,
     .policy-box,
     .visit-option span,
@@ -1614,8 +1626,8 @@
       </button>
       <div class="nav-links">
         <a href="#services">Services</a>
-        <a href="#builder">Custom Plans</a>
         <a href="#lawn-building">New Lawns</a>
+        <a href="#builder">Custom Plans</a>
         <a href="#contact" class="book-now">Book Now</a>
       </div>
     </nav>
@@ -1638,8 +1650,8 @@
     </button>
     <div class="side-links">
       <a href="#services">Services</a>
-      <a href="#builder">Custom Plans</a>
       <a href="#lawn-building">New Lawns</a>
+      <a href="#builder">Custom Plans</a>
       <a href="#contact" class="book-now">Book Now</a>
     </div>
   </aside>
@@ -1765,189 +1777,6 @@
       </div>
     </section>
 
-    <section id="builder">
-      <div class="media-row">
-        <div class="section-header">
-          <h2>Build your custom plan.</h2>
-          <p>
-            Choose the services your yard needs and how often we visit — your estimate updates instantly, then request the plan and we'll confirm the details.
-          </p>
-        </div>
-        <div class="photo-panel watering" role="img" aria-label="Watering and irrigation care"></div>
-      </div>
-
-      <div class="plan-presets" aria-label="Plan presets">
-        <button type="button" class="preset" data-preset="essential">
-          <b>Essential Care</b>
-          <strong>J$15,000 <small>/ month</small></strong>
-          <span>Lawn care with weeding included — 2 visits per month. The community standard.</span>
-        </button>
-        <button type="button" class="preset" data-preset="maintenance">
-          <b>Full Maintenance</b>
-          <strong>J$21,000 <small>/ month</small></strong>
-          <span>Lawn care, hedging &amp; watering in every visit — 2 visits per month.</span>
-        </button>
-        <button type="button" class="preset" data-preset="development">
-          <b>New Lawn Development</b>
-          <strong>J$3,000 <small>to start</small></strong>
-          <span>Begins with a consultation — we assess your yard and quote the full development plan.</span>
-        </button>
-      </div>
-
-      <div class="builder-wrap">
-        <div class="builder">
-          <h3>1. What does your yard need?</h3>
-          <p>
-            Select the services included in every visit. Lawn care is the base at J$7,500 and includes weeding for progressive reduction and elimination of weeds. Hedging adds J$2,000 and watering J$1,000 per visit.
-          </p>
-
-          <div class="service-grid core" aria-label="Per-visit service selector">
-            <label class="service-tile">
-              <input type="checkbox" data-service="Lawn Care" data-jmd="7500" checked />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2.5 20.5h19" />
-                  <path d="M4.5 20.5C4.5 17.5 3.5 15 2 13.5" />
-                  <path d="M7.5 20.5c0-4-1-7.5-2.5-10" />
-                  <path d="M10.5 20.5c0-5 .2-8.5 1.5-12" />
-                  <path d="M13.5 20.5c0-4.5 1-8 2.5-10.5" />
-                  <path d="M16.5 20.5c0-3.5 1.2-6.5 3-8.5" />
-                  <path d="M19.5 20.5c0-2.5 1-4.5 2-5.5" />
-                </svg>
-                <b>Lawn Care</b>
-                <small>J$7,500 / visit — weeding included</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Hedging" data-jmd="2000" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="6" cy="6" r="3" />
-                  <circle cx="6" cy="18" r="3" />
-                  <line x1="8.5" y1="8" x2="19" y2="19" />
-                  <line x1="8.5" y1="16" x2="19" y2="5" />
-                </svg>
-                <b>Hedging</b>
-                <small>+J$2,000 / visit</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Watering" data-jmd="1000" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
-                  <path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5" />
-                </svg>
-                <b>Watering</b>
-                <small>+J$1,000 / visit</small>
-              </span>
-            </label>
-          </div>
-
-          <h3>2. How many visits per month?</h3>
-          <p>
-            The standard plan is two visits per month. Your selected services are included in every visit.
-          </p>
-
-          <div class="visit-picker" aria-label="Monthly visit selector">
-            <label class="visit-option">
-              <input type="radio" name="visits" value="1" />
-              <span>1 <small>visit</small></span>
-            </label>
-            <label class="visit-option">
-              <input type="radio" name="visits" value="2" checked />
-              <span>2 <small>visits</small></span>
-            </label>
-            <label class="visit-option">
-              <input type="radio" name="visits" value="3" />
-              <span>3 <small>visits</small></span>
-            </label>
-            <label class="visit-option">
-              <input type="radio" name="visits" value="4" />
-              <span>4 <small>visits</small></span>
-            </label>
-          </div>
-
-          <h3>3. Treatments &amp; extras</h3>
-          <p>
-            Targeted treatments priced per treatment, not per visit. Not sure what your yard needs? Book a consultation and we'll recommend the right combination.
-          </p>
-
-          <div class="service-grid extras" aria-label="Treatment selector">
-            <label class="service-tile">
-              <input type="checkbox" data-service="Fertilizer Treatment" data-jmd="3000" data-freq="monthly" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
-                  <path d="M12 11v6" />
-                  <path d="M9 14h6" />
-                </svg>
-                <b>Fertilizer Treatment</b>
-                <small>+J$3,000 / treatment</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Inspection & Pesticide Treatment" data-jmd="3000" data-freq="monthly" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" />
-                  <path d="M9 11.5l2 2 4-4" />
-                </svg>
-                <b>Inspection &amp; Pesticide</b>
-                <small>+J$3,000 / treatment</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Topsoil Treatment" data-jmd="10000" data-freq="quarterly" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3l9 5-9 5-9-5z" />
-                  <path d="M3 13l9 5 9-5" />
-                  <path d="M3 17l9 5 9-5" />
-                </svg>
-                <b>Topsoil Treatment</b>
-                <small>J$10,000 / 3 months</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Consultation" data-jmd="3000" data-freq="once" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H3l2-3.4A8.5 8.5 0 1 1 21 11.5z" />
-                  <path d="M8.5 10.5h7" />
-                  <path d="M8.5 13.5h4.5" />
-                </svg>
-                <b>Consultation</b>
-                <small>J$3,000 / consultation</small>
-              </span>
-            </label>
-          </div>
-        </div>
-
-        <aside class="quote-card">
-          <h3>Your plan preview</h3>
-          <p>Your estimate updates as you build your plan. We confirm the final details after a quick yard review.</p>
-
-          <div class="total">
-            <span>Estimated lawn maintenance</span>
-            <strong id="jmdTotal">J$15,000</strong>
-            <small id="usdTotal">US$100 monthly reference</small>
-          </div>
-
-          <p class="quote-note" id="visitSummary">Includes 2 visits per month at J$7,500 per visit.</p>
-          <p class="quote-note" id="addonSummary">Services in every visit: Lawn Care.</p>
-          <p class="quote-note" id="extraSummary"></p>
-
-          <a class="button" id="requestPlan" href="mailto:info@mrclayslandscaping.com" style="position: relative; z-index: 1; margin-top: 18px; width: 100%; background: var(--clay); color: white;">Request This Plan</a>
-        </aside>
-      </div>
-    </section>
-
     <section id="lawn-building">
       <div class="split">
         <div class="feature-panel">
@@ -2034,6 +1863,209 @@
       </div>
     </section>
 
+    <section id="builder">
+      <div class="media-row">
+        <div class="section-header">
+          <h2>Build your custom plan.</h2>
+          <p>
+            Choose the services your yard needs and how often we visit — your estimate updates instantly, then request the plan and we'll confirm the details.
+          </p>
+        </div>
+        <div class="photo-panel watering" role="img" aria-label="Watering and irrigation care"></div>
+      </div>
+
+      <div class="plan-presets" aria-label="Plan presets">
+        <button type="button" class="preset" data-preset="essential">
+          <b>Essential Care</b>
+          <strong>J$15,000 <small>/ month</small></strong>
+          <span>Lawn care with weeding included — 2 visits per month. The community standard.</span>
+        </button>
+        <button type="button" class="preset" data-preset="maintenance">
+          <b>Full Maintenance</b>
+          <strong>J$21,000 <small>/ month</small></strong>
+          <span>Lawn care, hedging &amp; watering in every visit — 2 visits per month.</span>
+        </button>
+        <button type="button" class="preset" data-preset="development">
+          <b>New Lawn Development</b>
+          <strong>J$50,000 <small>/ month</small></strong>
+          <span>Consultation/inspection and topsoil treatment included, plus lawn care 4 visits per month.</span>
+        </button>
+      </div>
+
+      <div class="builder-wrap">
+        <div class="builder">
+          <h3>1. What does your yard need?</h3>
+          <p>
+            Select the services included in every visit. Lawn care is the base at J$7,500 and includes weeding for progressive reduction and elimination of weeds. Hedging adds J$2,000 and watering J$1,000 per visit.
+          </p>
+
+          <div class="service-grid core" aria-label="Per-visit service selector">
+            <label class="service-tile">
+              <input type="checkbox" data-service="Lawn Care" data-jmd="7500" checked />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2.5 20.5h19" />
+                  <path d="M4.5 20.5C4.5 17.5 3.5 15 2 13.5" />
+                  <path d="M7.5 20.5c0-4-1-7.5-2.5-10" />
+                  <path d="M10.5 20.5c0-5 .2-8.5 1.5-12" />
+                  <path d="M13.5 20.5c0-4.5 1-8 2.5-10.5" />
+                  <path d="M16.5 20.5c0-3.5 1.2-6.5 3-8.5" />
+                  <path d="M19.5 20.5c0-2.5 1-4.5 2-5.5" />
+                </svg>
+                <b>Lawn Care</b>
+                <small>J$7,500 / visit — weeding included</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Hedging" data-jmd="2000" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3" />
+                  <circle cx="6" cy="18" r="3" />
+                  <line x1="8.5" y1="8" x2="19" y2="19" />
+                  <line x1="8.5" y1="16" x2="19" y2="5" />
+                </svg>
+                <b>Hedging</b>
+                <small>+J$2,000 / visit</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Watering" data-jmd="1000" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
+                  <path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5" />
+                </svg>
+                <b>Watering</b>
+                <small class="tile-price">+J$1,000 / visit</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+          </div>
+
+          <h3>2. How many visits per month?</h3>
+          <p>
+            The standard plan is two visits per month. Your selected services are included in every visit.
+          </p>
+
+          <div class="visit-picker" aria-label="Monthly visit selector">
+            <label class="visit-option">
+              <input type="radio" name="visits" value="1" />
+              <span>1 <small>visit</small></span>
+            </label>
+            <label class="visit-option">
+              <input type="radio" name="visits" value="2" checked />
+              <span>2 <small>visits</small></span>
+            </label>
+            <label class="visit-option">
+              <input type="radio" name="visits" value="3" />
+              <span>3 <small>visits</small></span>
+            </label>
+            <label class="visit-option">
+              <input type="radio" name="visits" value="4" />
+              <span>4 <small>visits</small></span>
+            </label>
+          </div>
+
+          <h3>3. Treatments &amp; extras</h3>
+          <p>
+            Each treatment shows its standalone price. Some services and plans include certain treatments automatically at no extra charge — included treatments are highlighted below. Not sure what your yard needs? Book a consultation and we'll recommend the right combination.
+          </p>
+
+          <div class="service-grid extras" aria-label="Treatment selector">
+            <label class="service-tile">
+              <input type="checkbox" data-service="Fertilizer Treatment" data-jmd="3000" data-freq="monthly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
+                  <path d="M12 11v6" />
+                  <path d="M9 14h6" />
+                </svg>
+                <b>Fertilizer Treatment</b>
+                <small class="tile-price">+J$3,000 / treatment</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Pesticide Treatment" data-jmd="3000" data-freq="monthly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" />
+                  <path d="M9 11.5l2 2 4-4" />
+                </svg>
+                <b>Pesticide Treatment</b>
+                <small class="tile-price">+J$3,000 / treatment</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Weed Control & Removal" data-jmd="5000" data-freq="monthly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21V9" />
+                  <path d="M12 13c0-3.5-2.5-5-5.5-5 0 3.5 2.5 5 5.5 5z" />
+                  <path d="M5 21h14" />
+                  <path d="M9 5l3 4 3-4" />
+                </svg>
+                <b>Weed Control &amp; Removal</b>
+                <small class="tile-price">+J$5,000 / treatment</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Topsoil Treatment" data-jmd="10000" data-freq="quarterly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l9 5-9 5-9-5z" />
+                  <path d="M3 13l9 5 9-5" />
+                  <path d="M3 17l9 5 9-5" />
+                </svg>
+                <b>Topsoil Treatment</b>
+                <small class="tile-price">J$10,000 / 3 months</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Consultation/Inspection" data-jmd="3000" data-freq="once" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H3l2-3.4A8.5 8.5 0 1 1 21 11.5z" />
+                  <path d="M8.5 10.5h7" />
+                  <path d="M8.5 13.5h4.5" />
+                </svg>
+                <b>Consultation/Inspection</b>
+                <small class="tile-price">J$3,000 / consultation</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <aside class="quote-card">
+          <h3>Your plan preview</h3>
+          <p>Your estimate updates as you build your plan. We confirm the final details after a quick yard review.</p>
+
+          <div class="total">
+            <span>Estimated lawn maintenance</span>
+            <strong id="jmdTotal">J$15,000</strong>
+            <small id="usdTotal">US$100 monthly reference</small>
+          </div>
+
+          <p class="quote-note" id="visitSummary">Includes 2 visits per month at J$7,500 per visit.</p>
+          <p class="quote-note" id="addonSummary">Services in every visit: Lawn Care.</p>
+          <p class="quote-note" id="extraSummary"></p>
+
+          <a class="button" id="requestPlan" href="mailto:info@mrclayslandscaping.com" style="position: relative; z-index: 1; margin-top: 18px; width: 100%; background: var(--clay); color: white;">Request This Plan</a>
+        </aside>
+      </div>
+    </section>
+
     <div class="cta" id="contact">
       <div class="cta-box">
         <div>
@@ -2068,9 +2100,9 @@
     const JMD_PER_USD = 150;
 
     const presets = {
-      essential: { services: ['Lawn Care'], extras: [] },
-      maintenance: { services: ['Lawn Care', 'Hedging', 'Watering'], extras: [] },
-      development: { services: [], extras: ['Consultation'] }
+      essential: { services: ['Lawn Care'], extras: [], minVisits: 2 },
+      maintenance: { services: ['Lawn Care', 'Hedging', 'Watering'], extras: [], minVisits: 2 },
+      development: { services: ['Lawn Care'], extras: ['Consultation/Inspection', 'Topsoil Treatment'], minVisits: 4, flatPrice: 50000 }
     };
 
     function formatJMD(value) {
@@ -2081,26 +2113,66 @@
       return Array.from(inputs).filter(i => i.checked).map(i => i.dataset.service);
     }
 
-    function syncPresets() {
-      const services = checkedNames(coreInputs).sort().join('|');
-      const extras = checkedNames(extraInputs).sort().join('|');
-      const visits = Number(document.querySelector('input[name="visits"]:checked').value);
+    // Rules that make a service/treatment included at no extra charge.
+    // These are evaluated from raw selection state, independent of which preset (if any) is active.
+    function computeIncludedByRule(coreNamesRaw, visits) {
+      const included = new Set();
+      if (coreNamesRaw.includes('Lawn Care')) included.add('Weed Control & Removal');
+      if (coreNamesRaw.includes('Hedging')) included.add('Pesticide Treatment');
+      if (visits >= 3) {
+        included.add('Fertilizer Treatment');
+        included.add('Watering');
+      }
+      return included;
+    }
 
-      presetButtons.forEach(button => {
-        const preset = presets[button.dataset.preset];
+    // Matches the current selection against each named plan: every service/extra the plan
+    // requires must be checked, and there must be no OTHER checked items beyond what it
+    // requires — unless that extra item is only checked because a rule forces it (a side
+    // effect of visits/other selections, not a genuine additional choice).
+    function getActivePreset(coreNamesRaw, extraNamesRaw, visits, includedByRule) {
+      for (const key of Object.keys(presets)) {
+        const preset = presets[key];
+        const hasAllServices = preset.services.every(s => coreNamesRaw.includes(s));
+        const hasAllExtras = preset.extras.every(e => extraNamesRaw.includes(e));
+        const extraCoreChoices = coreNamesRaw.filter(n => !preset.services.includes(n) && !includedByRule.has(n));
+        const extraExtraChoices = extraNamesRaw.filter(n => !preset.extras.includes(n) && !includedByRule.has(n));
         const matches =
-          preset.services.slice().sort().join('|') === services &&
-          preset.extras.slice().sort().join('|') === extras &&
-          (preset.services.length === 0 || visits >= 2);
-        button.classList.toggle('active', matches);
-      });
+          hasAllServices && hasAllExtras &&
+          extraCoreChoices.length === 0 && extraExtraChoices.length === 0 &&
+          visits >= preset.minVisits;
+        if (matches) return key;
+      }
+      return null;
     }
 
     function updatePlan() {
       const visits = Number(document.querySelector('input[name="visits"]:checked').value);
+      const coreNamesRaw = checkedNames(coreInputs);
+      const extraNamesRaw = checkedNames(extraInputs);
 
-      const core = Array.from(coreInputs).filter(i => i.checked);
-      const extras = Array.from(extraInputs).filter(i => i.checked);
+      const includedByRule = computeIncludedByRule(coreNamesRaw, visits);
+      const activePreset = getActivePreset(coreNamesRaw, extraNamesRaw, visits, includedByRule);
+      if (activePreset === 'development') {
+        includedByRule.add('Topsoil Treatment');
+        includedByRule.add('Consultation/Inspection');
+      }
+
+      // Apply included/free state to every tile: force-check and disable while the rule holds,
+      // otherwise re-enable (never force-uncheck, so genuine user choices are preserved).
+      [...coreInputs, ...extraInputs].forEach(input => {
+        const isIncluded = includedByRule.has(input.dataset.service);
+        if (isIncluded) {
+          input.checked = true;
+          input.disabled = true;
+        } else {
+          input.disabled = false;
+        }
+        input.closest('.service-tile').classList.toggle('included', isIncluded);
+      });
+
+      const core = Array.from(coreInputs).filter(i => i.checked && !includedByRule.has(i.dataset.service));
+      const extras = Array.from(extraInputs).filter(i => i.checked && !includedByRule.has(i.dataset.service));
 
       const jmdPerVisit = core.reduce((sum, i) => sum + Number(i.dataset.jmd), 0);
       const monthlyTreatments = extras
@@ -2113,11 +2185,15 @@
         .filter(i => i.dataset.freq === 'once')
         .reduce((sum, i) => sum + Number(i.dataset.jmd), 0);
 
-      const serviceNames = core.map(i => i.dataset.service);
-      const extraNames = extras.map(i => i.dataset.service);
+      const serviceNames = checkedNames(coreInputs);
+      const extraNames = checkedNames(extraInputs);
       const monthly = visits * jmdPerVisit + monthlyTreatments;
 
-      if (monthly > 0) {
+      if (activePreset === 'development') {
+        jmdTotal.textContent = formatJMD(presets.development.flatPrice);
+        usdTotal.textContent = 'US$' + Math.round(presets.development.flatPrice / JMD_PER_USD).toLocaleString('en-US') + ' monthly reference';
+        visitSummary.textContent = 'Flat monthly plan: 4 lawn visits, consultation/inspection, and topsoil treatment all included.';
+      } else if (monthly > 0) {
         jmdTotal.textContent = formatJMD(monthly);
         usdTotal.textContent = 'US$' + Math.round(monthly / JMD_PER_USD).toLocaleString('en-US') + ' monthly reference';
         visitSummary.textContent =
@@ -2139,7 +2215,7 @@
 
       const extraParts = [];
       if (quarterly > 0) extraParts.push('+ ' + formatJMD(quarterly) + ' topsoil treatment every 3 months');
-      if (oneTime > 0 && monthly > 0) extraParts.push('+ ' + formatJMD(oneTime) + ' one-time consultation');
+      if (oneTime > 0 && activePreset !== 'development' && monthly > 0) extraParts.push('+ ' + formatJMD(oneTime) + ' one-time consultation');
       extraSummary.textContent = extraParts.length ? extraParts.join(' · ') + '.' : '';
       extraSummary.style.display = extraParts.length ? '' : 'none';
 
@@ -2149,16 +2225,18 @@
         '- Visits per month: ' + visits + '\n' +
         '- Rate per visit: ' + formatJMD(jmdPerVisit) + '\n' +
         '- Treatments & extras: ' + (extraNames.length ? extraNames.join(', ') : 'none') + '\n' +
-        '- Estimated monthly total: ' + formatJMD(monthly) +
+        '- Estimated monthly total: ' + (activePreset === 'development'
+          ? formatJMD(presets.development.flatPrice) + ' (flat New Lawn Development plan)'
+          : formatJMD(monthly)) +
         (quarterly > 0 ? '\n- Topsoil treatment: ' + formatJMD(quarterly) + ' every 3 months' : '') +
-        (oneTime > 0 ? '\n- Consultation: ' + formatJMD(oneTime) + ' one-time' : '') +
+        (oneTime > 0 && activePreset !== 'development' ? '\n- Consultation: ' + formatJMD(oneTime) + ' one-time' : '') +
         '\n\nMy name and address:\n';
 
       document.getElementById('requestPlan').href =
         'mailto:info@mrclayslandscaping.com?subject=' + encodeURIComponent('Lawn Care Plan Request') +
         '&body=' + encodeURIComponent(body);
 
-      syncPresets();
+      presetButtons.forEach(button => button.classList.toggle('active', button.dataset.preset === activePreset));
     }
 
     presetButtons.forEach(button => {
@@ -2166,8 +2244,10 @@
         const preset = presets[button.dataset.preset];
         coreInputs.forEach(i => { i.checked = preset.services.includes(i.dataset.service); });
         extraInputs.forEach(i => { i.checked = preset.extras.includes(i.dataset.service); });
-        if (Number(document.querySelector('input[name="visits"]:checked').value) < 2) {
-          document.querySelector('input[name="visits"][value="2"]').checked = true;
+        if (button.dataset.preset === 'development') {
+          document.querySelector('input[name="visits"][value="4"]').checked = true;
+        } else if (Number(document.querySelector('input[name="visits"]:checked').value) < preset.minVisits) {
+          document.querySelector('input[name="visits"][value="' + preset.minVisits + '"]').checked = true;
         }
         updatePlan();
       });
@@ -2191,9 +2271,9 @@
     // Scroll-spy: track which section is in view and reflect it in the menu.
     const sectionLabels = {
       services: 'Services',
-      builder: 'Custom Plans',
       'lawn-building': 'New Lawns',
       currency: 'Pricing',
+      builder: 'Plans',
       contact: 'Book Now'
     };
     const menuLabel = navDrop.querySelector('span');
