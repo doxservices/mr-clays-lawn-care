@@ -901,6 +901,7 @@
       font-size: .98rem;
       line-height: 1.2;
       letter-spacing: -0.02em;
+      overflow-wrap: break-word;
     }
 
     .service-tile small {
@@ -1101,6 +1102,7 @@
     .currency-hero {
       padding: 34px;
       background-image:
+        radial-gradient(ellipse 620px 260px at 0% 0%, rgba(10,20,13,.55), transparent 70%),
         linear-gradient(rgba(20,42,26,.5), rgba(20,42,26,.5)),
         url('assets/images/lawn-maintenance-bg.png');
       background-size: cover;
@@ -1732,7 +1734,7 @@
           <p>Regular cuts for homeowners who want their yard kept neat and controlled.</p>
           <ul>
             <li>Lawn cutting</li>
-            <li>Weeding included — progressive reduction and elimination of weeds</li>
+            <li>Weeding included: progressive reduction and elimination of weeds</li>
             <li>Basic edging and trimming</li>
             <li>Light cleanup after cutting</li>
           </ul>
@@ -1782,7 +1784,7 @@
         <div class="feature-panel">
           <h2>New lawns, installed right.</h2>
           <p>
-            A new development doesn't come with a finished yard. We install lawns from the ground up — planned around your soil, drainage, and sunlight — and establish the grass in stages until it's fully grown in.
+            A new development doesn't come with a finished yard. We install lawns from the ground up, planned around your soil, drainage, and sunlight, and establish the grass in stages until it's fully grown in.
           </p>
         </div>
 
@@ -1791,7 +1793,7 @@
             <div class="check">✓</div>
             <div>
               <strong>Site and soil assessment first.</strong>
-              <span>We test soil composition, grading, and drainage before anything is planted, so the plan fits your yard — not a generic template.</span>
+              <span>We test soil composition, grading, and drainage before anything is planted, so the plan fits your yard instead of a generic template.</span>
             </div>
           </div>
 
@@ -1815,7 +1817,7 @@
             <div class="check">✓</div>
             <div>
               <strong>A specific plan for every yard.</strong>
-              <span>Each new-lawn project gets its own written plan and quote based on the site assessment — starting with a simple consultation.</span>
+              <span>Each new-lawn project gets its own written plan and quote based on the site assessment, starting with a simple consultation.</span>
             </div>
           </div>
         </div>
@@ -1849,7 +1851,7 @@
           <div class="policy-box">
             <h3>How you pay</h3>
             <p>
-              Payment is arranged directly with us in JMD — no automatic billing, no hidden fees, and no long-term lock-in. You always know your rate before any work begins.
+              Payment is arranged directly with us in JMD, with no automatic billing, no hidden fees, and no long-term lock-in. You always know your rate before any work begins.
             </p>
           </div>
 
@@ -1868,7 +1870,7 @@
         <div class="section-header">
           <h2>Build your custom plan.</h2>
           <p>
-            Choose the services your yard needs and how often we visit — your estimate updates instantly, then request the plan and we'll confirm the details.
+            Choose the services your yard needs and how often we visit. Your estimate updates instantly, then request the plan and we'll confirm the details.
           </p>
         </div>
         <div class="photo-panel watering" role="img" aria-label="Watering and irrigation care"></div>
@@ -1878,17 +1880,17 @@
         <button type="button" class="preset" data-preset="essential">
           <b>Essential Care</b>
           <strong>J$15,000 <small>/ month</small></strong>
-          <span>Lawn care with weeding included — 2 visits per month. The community standard.</span>
+          <span>Lawn care with weeding included, 2 visits per month. The community standard.</span>
         </button>
         <button type="button" class="preset" data-preset="maintenance">
           <b>Full Maintenance</b>
           <strong>J$21,000 <small>/ month</small></strong>
-          <span>Lawn care, hedging &amp; watering in every visit — 2 visits per month.</span>
+          <span>Lawn care, hedging &amp; watering in every visit, 2 visits per month.</span>
         </button>
         <button type="button" class="preset" data-preset="development">
           <b>New Lawn Development</b>
-          <strong>J$50,000 <small>/ month</small></strong>
-          <span>Consultation/inspection and topsoil treatment included, plus lawn care 4 visits per month.</span>
+          <strong>J$50,000 <small>/ 3 months</small></strong>
+          <span>Consultation/inspection and topsoil treatment included, plus lawn care 4 visits per month for 3 months.</span>
         </button>
       </div>
 
@@ -1913,7 +1915,20 @@
                   <path d="M19.5 20.5c0-2.5 1-4.5 2-5.5" />
                 </svg>
                 <b>Lawn Care</b>
-                <small>J$7,500 / visit — weeding included</small>
+                <small>J$7,500 / visit, weeding included</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Watering" data-jmd="1000" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
+                  <path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5" />
+                </svg>
+                <b>Watering</b>
+                <small class="tile-price">+J$1,000 / visit</small>
+                <small class="tile-included">Included free</small>
               </span>
             </label>
 
@@ -1928,19 +1943,6 @@
                 </svg>
                 <b>Hedging</b>
                 <small>+J$2,000 / visit</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Watering" data-jmd="1000" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
-                  <path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5" />
-                </svg>
-                <b>Watering</b>
-                <small class="tile-price">+J$1,000 / visit</small>
-                <small class="tile-included">Included free</small>
               </span>
             </label>
           </div>
@@ -1971,12 +1973,12 @@
 
           <h3>3. Treatments &amp; extras</h3>
           <p>
-            Each treatment shows its standalone price. Some services and plans include certain treatments automatically at no extra charge — included treatments are highlighted below. Not sure what your yard needs? Book a consultation and we'll recommend the right combination.
+            Each treatment shows its standalone price. Some services and plans include certain treatments automatically at no extra charge, and included treatments are highlighted below. Not sure what your yard needs? Book a consultation and we'll recommend the right combination.
           </p>
 
           <div class="service-grid extras" aria-label="Treatment selector">
             <label class="service-tile">
-              <input type="checkbox" data-service="Fertilizer Treatment" data-jmd="3000" data-freq="monthly" />
+              <input type="checkbox" data-service="Fertilizer Treatment" data-jmd="5000" data-freq="monthly" />
               <span>
                 <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 3c3.5 4.5 6 7.8 6 11a6 6 0 1 1-12 0c0-3.2 2.5-6.5 6-11z" />
@@ -1984,20 +1986,7 @@
                   <path d="M9 14h6" />
                 </svg>
                 <b>Fertilizer Treatment</b>
-                <small class="tile-price">+J$3,000 / treatment</small>
-                <small class="tile-included">Included free</small>
-              </span>
-            </label>
-
-            <label class="service-tile">
-              <input type="checkbox" data-service="Pesticide Treatment" data-jmd="3000" data-freq="monthly" />
-              <span>
-                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" />
-                  <path d="M9 11.5l2 2 4-4" />
-                </svg>
-                <b>Pesticide Treatment</b>
-                <small class="tile-price">+J$3,000 / treatment</small>
+                <small class="tile-price">+J$5,000 / treatment</small>
                 <small class="tile-included">Included free</small>
               </span>
             </label>
@@ -2006,12 +1995,26 @@
               <input type="checkbox" data-service="Weed Control & Removal" data-jmd="5000" data-freq="monthly" />
               <span>
                 <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 21V9" />
-                  <path d="M12 13c0-3.5-2.5-5-5.5-5 0 3.5 2.5 5 5.5 5z" />
-                  <path d="M5 21h14" />
-                  <path d="M9 5l3 4 3-4" />
+                  <path d="M4 7h16" />
+                  <path d="M9 7V4h6v3" />
+                  <path d="M6 7l1 13a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-13" />
+                  <path d="M10 11v6" />
+                  <path d="M14 11v6" />
                 </svg>
                 <b>Weed Control &amp; Removal</b>
+                <small class="tile-price">+J$5,000 / treatment</small>
+                <small class="tile-included">Included free</small>
+              </span>
+            </label>
+
+            <label class="service-tile">
+              <input type="checkbox" data-service="Pesticide Treatment" data-jmd="5000" data-freq="monthly" />
+              <span>
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z" />
+                  <path d="M9 11.5l2 2 4-4" />
+                </svg>
+                <b>Pesticide Treatment</b>
                 <small class="tile-price">+J$5,000 / treatment</small>
                 <small class="tile-included">Included free</small>
               </span>
@@ -2032,15 +2035,16 @@
             </label>
 
             <label class="service-tile">
-              <input type="checkbox" data-service="Consultation/Inspection" data-jmd="3000" data-freq="once" />
+              <input type="checkbox" data-service="Consultation/Inspection" data-jmd="2000" data-freq="monthly" />
               <span>
                 <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H3l2-3.4A8.5 8.5 0 1 1 21 11.5z" />
-                  <path d="M8.5 10.5h7" />
-                  <path d="M8.5 13.5h4.5" />
+                  <path d="M8.5 6a3.5 3.5 0 0 1 7 0" />
+                  <path d="M7 6.3h10" />
+                  <circle cx="12" cy="10.3" r="2.3" />
+                  <path d="M6 21a6 6 0 0 1 12 0" />
                 </svg>
-                <b>Consultation/Inspection</b>
-                <small class="tile-price">J$3,000 / consultation</small>
+                <b>Consultation/<wbr>Inspection</b>
+                <small class="tile-price">J$2,000 / consultation</small>
                 <small class="tile-included">Included free</small>
               </span>
             </label>
@@ -2191,8 +2195,8 @@
 
       if (activePreset === 'development') {
         jmdTotal.textContent = formatJMD(presets.development.flatPrice);
-        usdTotal.textContent = 'US$' + Math.round(presets.development.flatPrice / JMD_PER_USD).toLocaleString('en-US') + ' monthly reference';
-        visitSummary.textContent = 'Flat monthly plan: 4 lawn visits, consultation/inspection, and topsoil treatment all included.';
+        usdTotal.textContent = 'US$' + Math.round(presets.development.flatPrice / JMD_PER_USD).toLocaleString('en-US') + ' for 3 months';
+        visitSummary.textContent = 'Flat fee for 3 months: 4 lawn visits per month, consultation/inspection, and topsoil treatment all included.';
       } else if (monthly > 0) {
         jmdTotal.textContent = formatJMD(monthly);
         usdTotal.textContent = 'US$' + Math.round(monthly / JMD_PER_USD).toLocaleString('en-US') + ' monthly reference';
@@ -2225,9 +2229,9 @@
         '- Visits per month: ' + visits + '\n' +
         '- Rate per visit: ' + formatJMD(jmdPerVisit) + '\n' +
         '- Treatments & extras: ' + (extraNames.length ? extraNames.join(', ') : 'none') + '\n' +
-        '- Estimated monthly total: ' + (activePreset === 'development'
-          ? formatJMD(presets.development.flatPrice) + ' (flat New Lawn Development plan)'
-          : formatJMD(monthly)) +
+        '- Estimated total: ' + (activePreset === 'development'
+          ? formatJMD(presets.development.flatPrice) + ' flat fee for 3 months (New Lawn Development plan)'
+          : formatJMD(monthly) + ' per month') +
         (quarterly > 0 ? '\n- Topsoil treatment: ' + formatJMD(quarterly) + ' every 3 months' : '') +
         (oneTime > 0 && activePreset !== 'development' ? '\n- Consultation: ' + formatJMD(oneTime) + ' one-time' : '') +
         '\n\nMy name and address:\n';
