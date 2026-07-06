@@ -8,7 +8,7 @@ Static marketing site for Mr. Clay's Lawn Care / Mr. Clay's Landscaping.
 - New Lawn Development is a standalone J$50,000 plan with Consultation/Inspection included.
 - New Lawn Development is built as Lawn Care × 4 visits per month.
 - 3 and 4 visit plans include Fertilizer Treatment and Watering on visit.
-- Hedging includes Pest Treatment at no added charge.
+- Hedging includes Pesticide Treatment at no added charge.
 - Lawn Care includes Weed Control & Removal at no added charge.
 - New Lawn Development includes Topsoil Treatment at no added charge.
 - Treatments may also have standalone charges when not included by the selected plan.
