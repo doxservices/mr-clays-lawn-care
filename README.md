@@ -20,11 +20,13 @@ Services → New Lawns → Pricing → Custom Plan Builder → Book Now.
 
 | Treatment | Standalone price | Notes |
 |---|---|---|
-| Fertilizer Treatment | J$3,000 / treatment | Billed monthly. Free at 3-4 visits/month. |
-| Pesticide Treatment | J$3,000 / treatment | Billed monthly. Free when Hedging is selected. |
-| Weed Control & Removal | J$5,000 / treatment | Billed monthly. Free when Lawn Care is selected (Lawn Care already bundles weeding). |
+| Fertilizer Treatment | J$5,000 / treatment | Billed monthly, flat (no visit multiplier). Free at 3-4 visits/month. |
+| Pesticide Treatment | J$5,000 / treatment | Billed monthly, flat. Free when Hedging is selected. |
+| Weed Control & Removal | J$5,000 / treatment | Billed monthly, flat. Free when Lawn Care is selected (Lawn Care already bundles weeding). |
 | Topsoil Treatment | J$10,000 / 3 months | Billed quarterly, shown as a separate line from the monthly total. Free under the New Lawn Development plan. |
-| Consultation/Inspection | J$3,000 / consultation | One-time. Free under the New Lawn Development plan. |
+| Consultation/Inspection | J$2,000 / consultation | Billed monthly, flat. Free under the New Lawn Development plan. |
+
+Each extras tile shows a small "+" badge above it (not a "+" in the price text) to indicate it's an optional add-on; the badge hides automatically once the item is included free.
 
 ### Inclusion rules (treatments/services that become free)
 
@@ -43,13 +45,20 @@ A tile that becomes included this way is force-checked and its checkbox disabled
 |---|---|---|
 | Essential Care | J$15,000 / month | Lawn Care, 2 visits/month. |
 | Full Maintenance | J$21,000 / month | Lawn Care + Hedging + Watering, 2 visits/month. |
-| New Lawn Development | J$50,000 / month (flat) | Lawn Care × 4 visits/month, Consultation/Inspection included, Topsoil Treatment included free. This is a full standalone plan, not a consultation starter — its price is a fixed flat rate, not a sum of its parts. |
+| New Lawn Development | J$50,000 (first month) | Lawn Care × 4 visits/month, Consultation/Inspection included, Topsoil Treatment included free. This is a full standalone plan, not a consultation starter — its price is a fixed flat rate for the first month, not a sum of its parts. |
 
 Selecting more visits than a plan's minimum (e.g. bumping Essential Care from 2 to 3 visits) does not remove the plan's highlighted/active state — only changing the selected services, or dropping below the plan's minimum visit count, does.
 
 ### Currency
 
 Prices are quoted in JMD (Jamaican Dollar) with a USD reference shown alongside, at a fixed reference rate of **J$150 = US$1**.
+
+## Icons
+
+All icons are real, licensed SVGs, not hand-drawn shapes:
+
+- Most icons (scissors, droplet, flask, trash, shield-check, layers, sprout) are inlined from [Lucide](https://lucide.dev/) (ISC license, no attribution required).
+- Lawn Care/Lawn Maintenance uses the 🚜 tractor emoji and Consultation/Inspection uses the 👷 construction-worker emoji, both from [Twemoji](https://twemoji.twitter.com/) (CC-BY 4.0 — attribution is credited in the footer). No line-icon library (Lucide, Tabler, Phosphor, Font Awesome, Material Symbols, Iconoir) has a lawn mower or a hard-hat-with-face icon, so these are the closest genuine, properly-licensed matches; they render in full color rather than the site's usual monochrome line style.
 
 ## Deployment
 
